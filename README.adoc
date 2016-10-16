@@ -1,0 +1,183 @@
+= 10 things we can do better with Java8
+
+Or modern Java in general
+
+== Who am I?
+
+Jakub Marchwicki::
+* developer
+* position wise: ex-architect, ex-manager, ex-consultant
+* domain wise: insurance, banking, massive scale marketing, customer service, edu
+cation
+* Twitter: @kubem
+
+== Complete workshop slides and code
+
+https://github.com/kubamarchwicki/training-java8-refactoring
+
+== #{counter:tips}. Lamdas in tests
+
+- [ ] `DictDictionaryClientTest` uses old-school pattern of
+`@Test(expected = Exception.class)` or a `fail()`method.
+
+-- Can it be replaced with lambda expression?
+
+-- Does it make tests more readable?
+
+== #{counter:tips}. Optional type
+
+- [ ] `Optional<T>` - returning container object
+instead of null values
+
+-- For class `DictionaryClient` replace return
+value of `firstTranslationFor()` with
+`Optional<DictionaryWord>`.
+When no translations were found, there is not first item present
+and `RuntimeException` (currently thrown) is not the most elegant solution
+
+-- When dealing with `Optional` type try to avoid sending
+it between modules (between public API) and unwrap it
+whenever suitable (like in `BatchTranslateCommand`)
+
+NOTE: Can we make the `firstTranslationFor()` any prettier? Without pesky
+null and empty checks?
+
+== #{counter:tips}. `isTraceEnabled()`
+
+- [x] Lazy logging evaluation
+
+
+-- Slf4j (used in the project) by design avoids
+superfluous object creation when the logger
+is disabled on a particular level
+
+-- This is not the case for JUL / Log4j so both
+`java.util.logging.Logger` and `org.apache.logging.log4j.Logger`
+allows `Supplier` arguments
+
+[source, java]
+log.trace(() -> "Lazy evaluated message with expensive toString: " + obj)
+
+-- If you encapsulate logging framework with your own logging
+interface, the above can be also achieved with
+
+[source, java]
+----
+default void trace(Supplier<String> messageSupplier) {
+    if (isTraceEnabled()) {
+        trace(messageSupplier.get());
+    }
+}
+----
+
+== #{counter:tips}. Iterations vs streams
+
+- [ ] Replace `DictDictionaryClient` _magic_ with a
+a `stream()` over lines read directly from the URL.
+
+-- Java8 stream API is not complete and still some methods are missing. If similar
+approach is taken for `BablaDictionaryClient` it results in cumbersome and pesky
+stream interestion
+
+-- There are additional Java8 stream support libraries worth trying:
+`StreamEx`, `jOOL`, `Javaslang`
+
+-- Both `jOOL` and `StreamEx` are stream drop-in replacements - extending
+the `Stream<T>` interfaces, adding some important methods (like `zip()` or tuples)
+
+-- `Javaslang` is a strategic decision of complete replacement of Collections API
+with a new library
+
+== #{counter:tips}. Better file handling
+
+- [ ] For `BatchTranslateCommand` use streams to read the
+input file.
+
+-- Moar `streams()` everywhere.
+
+-- Classes like `Scanner` I hope are well known to to everyone
+
+[source, java]
+new Scanner(inputStream).useDelimeter("\\A").next();
+
+== #{counter:tips} Rethinking external libs
+
+-- Do you really need Guava? What are you using that for?
+
+-- `Preconditions.checkNotNull(T)` vs. `Objects.notNull(T)`
+
+-- `ImmulableList.of()` vs `Collections.unmodifiableList(T)`.
+One is truly immutable while the other is read-only.
+
+== #{counter:tips} Composing future operations
+
+-- With `ComputableFuture` every operation can be made
+async by passing a supplier to a `supplyAsync()` method
+
+-- This get executed asynchronously on the current
+ThreadPool (default) or dedicated one.
+
+-- We can create a copy of `SyncTranslateCommand` class
+and make the calls asynchronous
+
+== #{counter:tips} Running both and accepting whichever first
+
+-- We are having two separate dictionaries. We can call them
+both and take whichever comes first.
+
+-- Tip: see `CompletableFuture.applyToEither()`
+
+== #{counter:tips} Caching and storing to a map
+
+- [ ] Add new translations to already existing list in `AppStateImpl.translations`.
+
+-- With Java8 the `Map` interface got updated with
+a few decent methods
+
+-- `map.ifAbsent(name, Supplier<T>)` and
+`map.merge(key, value, BiFunction<V>)`
+
+-- `Map.merge()` works more or less like this
+
+[source, java]
+----
+ V oldValue = map.get(key);
+ V newValue = (oldValue == null) ? value :
+              remappingFunction.apply(oldValue, value);
+ if (newValue == null)
+     map.remove(key);
+ else
+     map.put(key, newValue);
+----
+
+-- There are many other small improvements through out the language versions
+
+*** Collections.sort() -> List.sort()
+*** Integer.valueOf(x).compareTo(Integer.valueOf(y)) -> Integer.compare(x, y)
+*** System.getProperty("line.separator") -> System.lineSeparator()
+
+== #{counter:tips} Refactoring the printing methods
+
+-- The `PrintingTemplate` is pretty bad, how can we do
+it better?
+
+-- Some of the enhancements are suggested by the IDE
+
+-- Replace if statements with `Optional<T>`,
+filtering and mapping on optional types
+
+== Bonus
+
+.Some videos to follow
+* Beyond Lambdas - The Aftermath +
+    https://www.youtube.com/watch?v=VLQoLbryOIE
+
+* Pragmatic Functional Refactoring with Java 8 +
+    https://www.youtube.com/watch?v=v354UNs57zQ
+
+== Thank you
+
+Jakub Marchwicki
+
+* link:https://twitter.com/kubem[@kubem]
+* http://jakub.marchwicki.pl
