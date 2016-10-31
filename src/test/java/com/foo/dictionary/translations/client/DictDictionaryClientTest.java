@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -39,23 +40,30 @@ public class DictDictionaryClientTest {
         assertThat(words, hasSize(24));
     }
 
-    // TODO: replace with lambda call
-    @Test(expected = RuntimeException.class)
+    @Test
     public void should_throw_exception_when_no_single_word_found() {
         DictDictionaryClient client = new DictDictionaryClient("wrong-url");
-        client.firstTranslationFor("home");
+        Optional<Throwable> thrown = assertThrown(() -> client.firstTranslationFor("home"));
+
+        assertThat(thrown.isPresent(), equalTo(true));
     }
 
     @Test
     public void should_fail_when_no_single_word_found() {
         DictDictionaryClient client = new DictDictionaryClient("wrong-url");
+        Optional<Throwable> e = assertThrown(() -> client.firstTranslationFor("home"));
 
+        assertThat(e.isPresent(), equalTo(true));
+        assertThat(e.get().getClass(), typeCompatibleWith(RuntimeException.class));
+        assertThat(e.get().getMessage(), equalTo("No words found"));
+    }
+
+    private Optional<Throwable> assertThrown(Runnable command) {
         try {
-            client.firstTranslationFor("home");
-            fail("Expected RuntimeException wasn't thrown");
-        } catch (Exception e) {
-            assertThat(e.getClass(), typeCompatibleWith(RuntimeException.class));
-            assertThat(e.getMessage(), equalTo("No words found"));
+            command.run();
+            return Optional.empty();
+        } catch (Throwable t) {
+            return Optional.of(t);
         }
     }
 
