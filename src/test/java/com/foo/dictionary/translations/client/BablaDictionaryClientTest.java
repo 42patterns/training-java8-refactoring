@@ -24,7 +24,7 @@ public class BablaDictionaryClientTest {
 
     @Test
     public void should_return_home_for_first_translation() throws Exception {
-        assertThat(client.firstTranslationFor("good morning").polishWord, is(equalTo("dzień dobry")));
+        assertThat(client.firstTranslationFor("good morning").get().polishWord, is(equalTo("dzień dobry")));
     }
 
     @Test

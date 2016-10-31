@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Optional;
 
 public class LoggingWrapper implements DictionaryClient {
 
@@ -20,9 +21,9 @@ public class LoggingWrapper implements DictionaryClient {
     }
 
     @Override
-    public DictionaryWord firstTranslationFor(String word) {
+    public Optional<DictionaryWord> firstTranslationFor(String word) {
         log.debug("Entering firstTranslationFor({})", word);
-        final DictionaryWord translation = target.firstTranslationFor(word);
+        final Optional<DictionaryWord> translation = target.firstTranslationFor(word);
         log.debug("Leaving firstTranslationFor({}): {}", word, translation);
         return translation;
     }

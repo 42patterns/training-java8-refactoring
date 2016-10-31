@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,13 +29,13 @@ public class BablaDictionaryClient implements DictionaryClient {
     }
 
     @Override
-    public DictionaryWord firstTranslationFor(String wordToFind) {
+    public Optional<DictionaryWord> firstTranslationFor(String wordToFind) {
         List<DictionaryWord> foundWords = allTranslationsFor(wordToFind);
         if (foundWords == null || foundWords.isEmpty()) {
-            throw new RuntimeException("No translations found for word " +  wordToFind);
+            return Optional.empty();
         }
 
-        return foundWords.get(0);
+        return Optional.of(foundWords.get(0));
     }
 
     @Override

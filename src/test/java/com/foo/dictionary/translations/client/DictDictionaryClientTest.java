@@ -31,7 +31,7 @@ public class DictDictionaryClientTest {
 
     @Test
     public void should_return_home_for_first_translation() throws Exception {
-        assertThat(client.firstTranslationFor("home").polishWord, is(equalTo("dom")));
+        assertThat(client.firstTranslationFor("home").get().polishWord, is(equalTo("dom")));
     }
 
     @Test

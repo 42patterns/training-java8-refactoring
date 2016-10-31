@@ -6,7 +6,9 @@ import com.foo.dictionary.translations.client.DictionaryClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class FallbackStubClient implements DictionaryClient {
 
@@ -21,13 +23,14 @@ public class FallbackStubClient implements DictionaryClient {
 	}
 
 	@Override
-	public DictionaryWord firstTranslationFor(String word) {
+	public Optional<DictionaryWord> firstTranslationFor(String word) {
 		try {
 			return target.firstTranslationFor(word);
 		} catch (Exception e) {
 			log.warn("Problem retrieving word `{}`", word, e);
 			if (fallbackTranslations.containsKey(word)) {
-				return fallbackTranslations.get(word).get(0);
+				List<DictionaryWord> defaultTranslations = fallbackTranslations.get(word);
+				return defaultTranslations.stream().findAny();
 			} else {
 				throw new RuntimeException(e);
 			}

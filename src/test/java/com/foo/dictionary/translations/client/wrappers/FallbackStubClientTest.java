@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.junit.Assert.assertThat;
 
@@ -17,7 +18,7 @@ public class FallbackStubClientTest {
 
     final FallbackStubClient fallbackStubClient = new FallbackStubClient(fallback, new DictionaryClient() {
         @Override
-        public DictionaryWord firstTranslationFor(String word) {
+        public Optional<DictionaryWord> firstTranslationFor(String word) {
             throw new RuntimeException("Not implemented");
         }
 

@@ -14,8 +14,8 @@ import java.util.List;
 
 public class BatchTranslateCommand implements Command {
 
-    private static Logger log = LoggerFactory.getLogger(BatchTranslateCommand.class);
     private final static String DEFAULT_FILE = "/batch.csv";
+    private static Logger log = LoggerFactory.getLogger(BatchTranslateCommand.class);
     private final String file;
     private final AppState state;
 
@@ -46,9 +46,10 @@ public class BatchTranslateCommand implements Command {
             log.info("Problem reading stream");
         }
 
-        for (String s: wordsToTranslate) {
+        for (String s : wordsToTranslate) {
             if (!profanityCheck.isObscenityWord(s)) {
-                state.setTranslation(s, client.firstTranslationFor(s));
+                client.firstTranslationFor(s).ifPresent(word ->
+                        state.setTranslation(s, word));
             }
         }
     }
