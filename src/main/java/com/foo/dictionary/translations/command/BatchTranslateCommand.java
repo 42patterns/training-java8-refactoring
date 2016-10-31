@@ -9,8 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.AbstractMap;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class BatchTranslateCommand implements Command {
 
@@ -30,27 +31,23 @@ public class BatchTranslateCommand implements Command {
     public void run() {
         final DictionaryClient client = state.clients().getBablaDictionary();
         final ProfanityCheckClient profanityCheck = state.clients().getProfanityClient();
-        final InputStream fileStream = openFileOrDefault(file);
 
-        List<String> wordsToTranslate = new ArrayList<String>();
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(fileStream)
-        );
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(openFileOrDefault(file))
+        )) {
 
-        try {
-            String line = reader.readLine();
-            while ((line = reader.readLine()) != null) {
-                wordsToTranslate.add(line);
-            }
+            reader.lines()
+                    .skip(1)
+                    .filter(s -> !profanityCheck.isObscenityWord(s))
+                    .map(s -> new Tuple<>(s, client.firstTranslationFor(s)))
+                    .map(t -> t.getValue().map(w ->
+                            Optional.of(new Tuple<>(t.getKey(), w))).orElse(Optional.empty()))
+                    .flatMap(o -> o.map(Stream::of).orElseGet(Stream::empty))
+//                    .filter(e -> e.getValue().isPresent())
+                    .forEach(e -> state.setTranslation(e.getKey(), e.getValue()));
+
         } catch (IOException e) {
-            log.info("Problem reading stream");
-        }
-
-        for (String s : wordsToTranslate) {
-            if (!profanityCheck.isObscenityWord(s)) {
-                client.firstTranslationFor(s).ifPresent(word ->
-                        state.setTranslation(s, word));
-            }
+            log.info("Problem reading stream: ", e);
         }
     }
 
@@ -61,5 +58,12 @@ public class BatchTranslateCommand implements Command {
             log.info("Cannot open file={} reason={} - fallback to default", file, e.getMessage());
             return getClass().getResourceAsStream(DEFAULT_FILE);
         }
+    }
+}
+
+class Tuple<T, U> extends AbstractMap.SimpleEntry<T, U> {
+
+    public Tuple(T key, U value) {
+        super(key, value);
     }
 }
