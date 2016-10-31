@@ -31,11 +31,7 @@ public class DictDictionaryClient implements DictionaryClient {
     @Override
     public Optional<DictionaryWord> firstTranslationFor(String wordToFind) {
         List<DictionaryWord> foundWords = allTranslationsFor(wordToFind);
-        if (foundWords == null || foundWords.isEmpty()) {
-            return Optional.empty();
-        }
-
-        return Optional.of(foundWords.get(0));
+        return foundWords.stream().findFirst();
     }
 
     @Override
