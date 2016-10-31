@@ -38,6 +38,10 @@ public class DictDictionaryClient implements DictionaryClient {
     }
 
     @Override
+    //TODO: replace while loop and matching with a single method based on streams
+    //tips: - look at `BufferedReader.lines()`
+    //      - first convert whole html into a List<String> and convert it
+    //        to <DictionaryWord> in the additional step
     public List<DictionaryWord> allTranslationsFor(String wordToFind) {
         List<DictionaryWord> results = new ArrayList<DictionaryWord>();
 

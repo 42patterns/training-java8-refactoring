@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface DictionaryClient {
 
+	//TODO: replace with Optional<DictionaryWord> as the value might not be present
+	//and RuntimeException is not the most elegant thing
 	DictionaryWord firstTranslationFor(String word);
 	List<DictionaryWord> allTranslationsFor(String word);
 

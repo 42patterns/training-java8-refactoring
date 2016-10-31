@@ -39,6 +39,7 @@ public class DictDictionaryClientTest {
         assertThat(words, hasSize(24));
     }
 
+    // TODO: replace with lambda call
     @Test(expected = RuntimeException.class)
     public void should_throw_exception_when_no_single_word_found() {
         DictDictionaryClient client = new DictDictionaryClient("wrong-url");

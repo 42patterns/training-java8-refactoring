@@ -6,6 +6,11 @@ import com.foo.dictionary.commands.Commands;
 import com.foo.dictionary.translations.client.DictionaryClient;
 import com.foo.dictionary.translations.profanity.ProfanityCheckClient;
 
+// TODO: clone this class and make the profanity check call async with supplyAsync
+//  after that map it with actual translation with thenCompose() method
+//  at first the translation will be always called - can you make it not return
+//  profanity word translation at all? tip: use a completed Future with
+//  CompletableFuture.completedFuture()
 public class SyncTranslateCommand implements Command {
 
     private final AppState state;

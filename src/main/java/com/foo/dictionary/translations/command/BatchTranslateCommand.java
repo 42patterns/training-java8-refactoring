@@ -24,6 +24,8 @@ public class BatchTranslateCommand implements Command {
         this.file = Commands.trimCommandWord(commandStr);
     }
 
+    //TODO: replace CSV handling with a BufferedReader.lines()
+    //      - use skip() if not all lines are required
     @Override
     public void run() {
         final DictionaryClient client = state.clients().getBablaDictionary();
