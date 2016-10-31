@@ -42,6 +42,7 @@ public class DictDictionaryClientTest {
     }
 
     @Test
+    @Ignore
     public void should_return_optional_when_no_single_word_found() {
         DictDictionaryClient client = new DictDictionaryClient("wrong-url");
         Optional<DictionaryWord> maybeHome = client.firstTranslationFor("home");

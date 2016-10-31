@@ -1,11 +1,14 @@
 package com.foo.dictionary.translations.client;
 
 import com.foo.dictionary.translations.DictionaryWord;
+import one.util.streamex.EntryStream;
+import one.util.streamex.StreamEx;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class BablaDictionaryClient implements DictionaryClient {
 
@@ -38,70 +42,39 @@ public class BablaDictionaryClient implements DictionaryClient {
     public List<DictionaryWord> allTranslationsFor(String wordToFind) {
         List<DictionaryWord> results = new ArrayList<DictionaryWord>();
 
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new URL(
-                    url(wordToFind)).openStream()));
-
-            String word = moveToEnglishWord(bufferedReader);
-            while (hasNextWord(word)) {
-                String polishWord = moveToPolishWord(bufferedReader);
-                results.add(new DictionaryWord(word, polishWord));
-                word = moveToEnglishWord(bufferedReader);
-            }
-        } catch (IOException e) {
-            log.warn("Couldn't process the stream {}. Empty list", url(wordToFind));
-            throw new RuntimeException("No words found");
-        }
-
-        return results;
-    }
-
-    private String moveToPolishWord(BufferedReader bufferedReader) {
-        Pattern pat = Pattern.compile(".*/slownik/polski-angielski/.*\">" +
-                "(.*)" +
-                "</a>.*");
-        return moveToNextWord(bufferedReader, pat);
-    }
-
-    private String moveToEnglishWord(BufferedReader bufferedReader) {
-        Pattern pat = Pattern.compile(".*/slownik/angielski-polski/.*\">" +
+        Pattern englishWordPattern = Pattern.compile(".*result-left.*/slownik/angielski-polski/.*\">" +
                 "<strong>(.*)</strong>" +
                 ".*");
-        return moveToNextWord(bufferedReader, pat);
-    }
 
+        Pattern polishWordPattern = Pattern.compile(".*result-right.*/slownik/polski-angielski/.*\">" +
+                "(.*)" +
+                "</a>.*");
 
-    private String moveToNextWord(BufferedReader bufferedReader, Pattern pat) {
-        try {
+        try (InputStream io = new URL(url(wordToFind)).openStream();
+             BufferedReader reader = new BufferedReader(new InputStreamReader(io))) {
 
-            String line = bufferedReader.readLine();
+            List<String> wholeFile = reader.lines().collect(Collectors.toList());
 
-            while (hasNextLine(line)) {
-                Matcher matcher = pat.matcher(line);
-                if (matcher.find()) {
-                    return matcher.group(matcher.groupCount());
-                } else {
-                    line = bufferedReader.readLine();
-                }
-            }
+            return StreamEx.of(wholeFile)
+                    .map(englishWordPattern::matcher)
+                    .filter(Matcher::find)
+                    .map(m -> m.group(m.groupCount()))
+                    .zipWith(StreamEx.of(wholeFile)
+                            .map(polishWordPattern::matcher)
+                            .filter(Matcher::find)
+                            .map(m -> m.group(m.groupCount()))
+                    )
+                    .map(e -> new DictionaryWord(e.getKey(), e.getValue()))
+                    .collect(Collectors.toList());
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.warn("Couldn't process the stream {}. Empty list", url(wordToFind));
+            return Collections.emptyList();
         }
-
-        return null;
     }
 
     private String url(String wordToFind) {
         return urlString.replace("{%%%}", wordToFind.replace(" ", "-"));
-    }
-
-    private boolean hasNextWord(String line) {
-        return (line != null);
-    }
-
-    private boolean hasNextLine(String line) {
-        return (line != null);
     }
 
 }
