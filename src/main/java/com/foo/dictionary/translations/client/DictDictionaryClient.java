@@ -6,14 +6,16 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class DictDictionaryClient implements DictionaryClient {
 
@@ -40,60 +42,39 @@ public class DictDictionaryClient implements DictionaryClient {
     //      - first convert whole html into a List<String> and convert it
     //        to <DictionaryWord> in the additional step
     public List<DictionaryWord> allTranslationsFor(String wordToFind) {
-        List<DictionaryWord> results = new ArrayList<DictionaryWord>();
+        try (InputStream io = new URL(url(wordToFind)).openStream();
+             BufferedReader reader = new BufferedReader(new InputStreamReader(io))) {
 
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new URL(
-                    url(wordToFind)).openStream()));
+            List<String> collect = reader.lines()
+                .map(DictDictionaryClient::match) ////JDK9 will has Optional.stream() so we would be able to do flatMap here
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
 
-            String word = moveToNextWord(bufferedReader);
-            while (hasNextWord(word)) {
-                String englishWord = moveToNextWord(bufferedReader);
-                results.add(new DictionaryWord(englishWord, word));
-                word = moveToNextWord(bufferedReader);
-            }
+            return IntStream.range(0, collect.size())
+                    .filter(i -> i%2==1)
+                    .mapToObj(i -> new DictionaryWord(collect.get(i),collect.get(i-1)))
+                    .collect(Collectors.toList());
 
         } catch (IOException e) {
             log.warn("Couldn't process the stream {}. Empty list", url(wordToFind));
             throw new RuntimeException("No words found");
         }
+    }
 
-        return results;
+    private static Optional<String> match(String s) {
+        Pattern pattern = Pattern
+                .compile(".*<a href=\"dict\\?words?=(.*)&lang.*");
+
+        Matcher m = pattern.matcher(s);
+        if (m.find()) {
+            return Optional.of(m.group(m.groupCount()));
+        } else {
+            return Optional.empty();
+        }
     }
 
     private String url(String wordToFind) {
         return urlString.replace("{%%%}", wordToFind);
     }
-
-    private String moveToNextWord(BufferedReader bufferedReader) {
-        try {
-
-            String line = bufferedReader.readLine();
-            Pattern pat = Pattern
-                    .compile(".*<a href=\"dict\\?words?=(.*)&lang.*");
-
-            while (hasNextLine(line)) {
-                Matcher matcher = pat.matcher(line);
-                if (matcher.find()) {
-                    return matcher.group(matcher.groupCount());
-                } else {
-                    line = bufferedReader.readLine();
-                }
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return null;
-    }
-
-    private boolean hasNextWord(String line) {
-        return (line != null);
-    }
-
-    private boolean hasNextLine(String line) {
-        return (line != null);
-    }
-
 }

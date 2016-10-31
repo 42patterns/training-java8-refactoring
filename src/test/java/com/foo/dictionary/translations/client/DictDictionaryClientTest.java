@@ -7,6 +7,7 @@ import org.hamcrest.core.IsCollectionContaining;
 import org.hamcrest.object.IsCompatibleType;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -41,6 +42,14 @@ public class DictDictionaryClientTest {
     }
 
     @Test
+    public void should_return_optional_when_no_single_word_found() {
+        DictDictionaryClient client = new DictDictionaryClient("wrong-url");
+        Optional<DictionaryWord> maybeHome = client.firstTranslationFor("home");
+        assertThat(maybeHome.isPresent(), equalTo(false));
+    }
+
+    @Test
+    @Ignore
     public void should_throw_exception_when_no_single_word_found() {
         DictDictionaryClient client = new DictDictionaryClient("wrong-url");
         Optional<Throwable> thrown = assertThrown(() -> client.firstTranslationFor("home"));
@@ -49,6 +58,7 @@ public class DictDictionaryClientTest {
     }
 
     @Test
+    @Ignore
     public void should_fail_when_no_single_word_found() {
         DictDictionaryClient client = new DictDictionaryClient("wrong-url");
         Optional<Throwable> e = assertThrown(() -> client.firstTranslationFor("home"));
