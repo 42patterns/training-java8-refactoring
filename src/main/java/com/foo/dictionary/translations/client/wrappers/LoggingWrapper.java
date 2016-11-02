@@ -30,9 +30,10 @@ public class LoggingWrapper implements DictionaryClient {
 
     @Override
     public List<DictionaryWord> allTranslationsFor(String word) {
+        long start = System.currentTimeMillis();
         log.debug("Entering allTranslationsFor({})", word);
         final List<DictionaryWord> translations = target.allTranslationsFor(word);
-        log.debug("Leaving allTranslationsFor({}): results.size({})", word, translations.size());
+        log.debug("Leaving allTranslationsFor({}) after {}ms: results.size({})", word, (System.currentTimeMillis() - start), translations.size());
         return translations;
     }
 

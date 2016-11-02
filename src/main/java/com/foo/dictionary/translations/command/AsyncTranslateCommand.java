@@ -8,12 +8,15 @@ import com.foo.dictionary.commands.Commands;
 import com.foo.dictionary.translations.DictionaryWord;
 import com.foo.dictionary.translations.client.DictionaryClient;
 import com.foo.dictionary.translations.profanity.ProfanityCheckClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Function;
 
 // TODO: clone this class and make the profanity check call async with supplyAsync
 //  after that map it with actual translation with thenCompose() method
@@ -22,6 +25,7 @@ import java.util.concurrent.Executors;
 //  CompletableFuture.completedFuture()
 public class AsyncTranslateCommand implements Command {
 
+    private static Logger log = LoggerFactory.getLogger(AsyncTranslateCommand.class);
     final String phrase;
     private final AppState state;
 
@@ -32,22 +36,17 @@ public class AsyncTranslateCommand implements Command {
 
     @Override
     public void run() {
-        final DictionaryClient client = state.clients().getBablaDictionary();
         final ProfanityCheckClient profanityCheck = state.clients().getProfanityClient();
-
-        // both calls are made
-//        CompletableFuture<List<DictionaryWord>> future =
-//                CompletableFuture.supplyAsync(() -> profanityCheck.isObscenityWord(phrase))
-//                .thenCombine(CompletableFuture.supplyAsync(() -> client.allTranslationsFor(phrase)),
-//                        (isObscene, list) ->
-//                                isObscene ? Collections.emptyList():
-//                                list);
+        final DictionaryClient bablaDictionary = state.clients().getBablaDictionary();
+        final DictionaryClient dictDictionary = state.clients().getDictDictionary();
 
         // maybe the second call isn't made
         CompletableFuture<List<DictionaryWord>> future =
                 CompletableFuture.supplyAsync(() -> profanityCheck.isObscenityWord(phrase))
                     .thenCompose(b -> b ? CompletableFuture.completedFuture(Collections.emptyList()) :
-                            CompletableFuture.supplyAsync(() -> client.allTranslationsFor(phrase))
+                            CompletableFuture.supplyAsync(() -> dictDictionary.allTranslationsFor(phrase))
+                                    .applyToEither(CompletableFuture.supplyAsync(() -> bablaDictionary.allTranslationsFor(phrase)),
+                                            Function.identity())
                     );
 
         state.setTranslations(phrase, future.join());
