@@ -54,7 +54,7 @@ public class DictDictionaryClient implements DictionaryClient {
 
         } catch (IOException e) {
             log.warn("Couldn't process the stream {}. Empty list", url(wordToFind));
-            return Collections.emptyList();
+            throw new RuntimeException("No words found");
         }
 
         return results;

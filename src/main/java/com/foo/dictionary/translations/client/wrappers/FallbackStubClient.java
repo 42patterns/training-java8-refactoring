@@ -1,5 +1,6 @@
 package com.foo.dictionary.translations.client.wrappers;
 
+import com.foo.dictionary.App;
 import com.foo.dictionary.translations.DictionaryWord;
 import com.foo.dictionary.translations.client.BablaDictionaryClient;
 import com.foo.dictionary.translations.client.DictDictionaryClient;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class FallbackStubClient implements DictionaryClient {
 
@@ -26,14 +28,9 @@ public class FallbackStubClient implements DictionaryClient {
 			return target.firstTranslationFor(word);
 		} catch (Exception e) {
 			log.warn("Problem retrieving word `{}`", word, e);
-			if ("good morning".equals(word)) {
-				DictionaryWord dictionaryWord = new DictionaryWord("good morning", "dzień dobry");
-				log.warn("Matching default {}", dictionaryWord);
-				return dictionaryWord;
-			} else if ("home".equals(word)) {
-				DictionaryWord dictionaryWord = new DictionaryWord("home", "dom");
-				log.warn("Matching default {}", dictionaryWord);
-				return dictionaryWord;
+			Map<String, List<DictionaryWord>> translations = App.APPLICATION_STATE.getTranslations();
+			if (translations.containsKey(word)) {
+				return translations.get(word).get(0);
 			} else {
 				throw new RuntimeException(e);
 			}
@@ -46,7 +43,15 @@ public class FallbackStubClient implements DictionaryClient {
 			return target.allTranslationsFor(word);
 		} catch (Exception e) {
 			log.warn("Problem retrieving word `{}`", word, e);
-			return new BablaDictionaryClient(loadStubHtmlFromDisk(word)).allTranslationsFor(word);
+			Map<String, List<DictionaryWord>> translations = App.APPLICATION_STATE.getTranslations();
+			if (translations.containsKey(word)) {
+				log.warn("Returning defaults for word: `{}`", word);
+				return translations.get(word);
+			} else if ("home".equals(word)) {
+				return new BablaDictionaryClient(loadStubHtmlFromDisk(word)).allTranslationsFor(word);
+			} else {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 

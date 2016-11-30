@@ -24,10 +24,9 @@ public class FallbackStubClientTest {
         }
     });
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void should_return_empty_list_when_no_file() {
         List<DictionaryWord> emptyList = fallbackStubClient.allTranslationsFor("non-existing-file");
-        assertThat(emptyList, empty());
     }
 
     @Test

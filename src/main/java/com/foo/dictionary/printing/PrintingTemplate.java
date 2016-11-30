@@ -3,13 +3,14 @@ package com.foo.dictionary.printing;
 import com.foo.dictionary.translations.DictionaryWord;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class PrintingTemplate {
 
     private final List<DictionaryWord> words;
-
+    private final String LINE_SEPARATOR = System.getProperty("line.separator");
     public PrintingTemplate(List<DictionaryWord> words) {
         this.words = words;
     }
@@ -17,7 +18,7 @@ public class PrintingTemplate {
     public String draw() {
         StringBuilder b = new StringBuilder();
         b.append(header());
-        b.append(System.lineSeparator());
+        b.append(LINE_SEPARATOR);
 
         Tuple<Integer> maxWidths = getMaxWidths();
         if (maxWidths.left == 0 && maxWidths.right == 0) {
@@ -38,7 +39,7 @@ public class PrintingTemplate {
                 b.append(" ");
 
             b.append(" ").append(separator());
-            b.append(System.lineSeparator());
+            b.append(LINE_SEPARATOR);
         }
 
         b.append(footer());
@@ -57,7 +58,7 @@ public class PrintingTemplate {
             b.append(separator());
         }
 
-        b.append(System.lineSeparator());
+        b.append(LINE_SEPARATOR);
         b.append(separator());
 
         for (int i = 0; i <= maxWidths.left; i++) {
@@ -97,19 +98,19 @@ public class PrintingTemplate {
         }
 
         List<DictionaryWord> words = new ArrayList<DictionaryWord>(this.words);
-        words.sort(new Comparator<DictionaryWord>() {
+        Collections.sort(words, new Comparator<DictionaryWord>() {
             @Override
             public int compare(DictionaryWord o1, DictionaryWord o2) {
-                return Integer.compare(o2.englishWord.length(), o1.englishWord.length());
+                return Integer.valueOf(o2.englishWord.length()).compareTo(Integer.valueOf(o1.englishWord.length()));
             }
         });
 
         Integer englishLength = words.get(0).englishWord.length();
 
-        words.sort(new Comparator<DictionaryWord>() {
+        Collections.sort(words, new Comparator<DictionaryWord>() {
             @Override
             public int compare(DictionaryWord o1, DictionaryWord o2) {
-                return Integer.compare(o2.polishWord.length(), o1.polishWord.length());
+                return Integer.valueOf(o2.polishWord.length()).compareTo(Integer.valueOf(o1.polishWord.length()));
             }
         });
 

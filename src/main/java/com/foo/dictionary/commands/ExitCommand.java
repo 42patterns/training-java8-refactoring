@@ -1,11 +1,11 @@
 package com.foo.dictionary.commands;
 
-import com.foo.dictionary.AppState;
+import com.foo.dictionary.App;
 
 public class ExitCommand implements Command {
 
     @Override
-    public AppState run(AppState currentState) {
-        return new AppState(false);
+    public void run() {
+        App.APPLICATION_STATE.stop();
     }
 }

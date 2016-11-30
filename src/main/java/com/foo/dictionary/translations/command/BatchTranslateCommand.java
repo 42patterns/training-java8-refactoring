@@ -1,9 +1,8 @@
 package com.foo.dictionary.translations.command;
 
-import com.foo.dictionary.AppState;
+import com.foo.dictionary.App;
 import com.foo.dictionary.commands.Command;
 import com.foo.dictionary.commands.Commands;
-import com.foo.dictionary.translations.DictionaryWord;
 import com.foo.dictionary.translations.client.DictionaryClient;
 import com.foo.dictionary.translations.profanity.ProfanityCheckClient;
 import com.foo.dictionary.translations.profanity.ProfanityFallbackStubClient;
@@ -26,9 +25,9 @@ public class BatchTranslateCommand implements Command {
     }
 
     @Override
-    public AppState run(AppState currentState) {
+    public void run() {
         final DictionaryClient client = ClientsFactory.getBablaDictionary();
-
+        final ProfanityCheckClient profanityCheck = ClientsFactory.getProfanityClient();
         final InputStream fileStream = openFileOrDefault(file);
 
         List<String> wordsToTranslate = new ArrayList<String>();
@@ -45,21 +44,11 @@ public class BatchTranslateCommand implements Command {
             log.info("Problem reading stream");
         }
 
-        List<DictionaryWord> translations = new ArrayList<DictionaryWord>();
         for (String s: wordsToTranslate) {
-            final ProfanityCheckClient profanityCheck = new ProfanityFallbackStubClient(
-                    new PurgoProfanityCheckClient()
-            );
-
             if (!profanityCheck.isObscenityWord(s)) {
-                translations.add(client.firstTranslationFor(s));
+                App.APPLICATION_STATE.setDefaults(s, client.firstTranslationFor(s));
             }
         }
-
-        return currentState.
-                fromCurrent().
-                withDefaultWords(translations).
-                build();
     }
 
     private InputStream openFileOrDefault(String filename) {
