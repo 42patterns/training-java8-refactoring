@@ -5,14 +5,17 @@ import com.foo.dictionary.translations.client.DictionaryClient;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
-import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.junit.Assert.assertThat;
 
 public class FallbackStubClientTest {
 
-    final FallbackStubClient fallbackStubClient = new FallbackStubClient(new DictionaryClient() {
+    final Map<String, List<DictionaryWord>> fallback = Collections.emptyMap();
+
+    final FallbackStubClient fallbackStubClient = new FallbackStubClient(fallback, new DictionaryClient() {
         @Override
         public DictionaryWord firstTranslationFor(String word) {
             throw new RuntimeException("Not implemented");

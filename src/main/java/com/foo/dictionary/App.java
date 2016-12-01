@@ -4,25 +4,46 @@ import com.foo.dictionary.commands.Command;
 import com.foo.dictionary.commands.CommandsFactory;
 import com.foo.dictionary.printing.PrintingTemplate;
 import com.foo.dictionary.translations.DictionaryWord;
+import com.foo.dictionary.translations.client.BablaDictionaryClient;
+import com.foo.dictionary.translations.client.DictDictionaryClient;
+import com.foo.dictionary.translations.client.DictionaryClient;
+import com.foo.dictionary.translations.client.wrappers.ArtificialSleepWrapper;
+import com.foo.dictionary.translations.client.wrappers.FallbackStubClient;
+import com.foo.dictionary.translations.client.wrappers.LoggingWrapper;
+import com.foo.dictionary.translations.profanity.ProfanityCheckClient;
+import com.foo.dictionary.translations.profanity.ProfanityFallbackStubClient;
+import com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class App {
 
-    final private static View view = new View();
-    final public static AppState APPLICATION_STATE = new AppStateImpl(view);
+    final private View view;
+    final private AppState state;
 
     public static void main(String[] args) {
+        View view = new View();
+        AppState state = new AppStateImpl(view);
+        App app = new App(view, state);
+        app.run();
+    }
+
+    public App(View view, AppState state) {
+        this.view = view;
+        this.state = state;
+    }
+
+    public void run() {
         view.help();
         CommandsFactory commandsFactory = new CommandsFactory();
 
-        while (APPLICATION_STATE.isRunning()) {
+        while (state.isRunning()) {
             view.prompt();
             Scanner s = new Scanner(System.in);
 
             String commandStr = s.nextLine();
-            Command command = commandsFactory.createCommand(commandStr);
+            Command command = commandsFactory.createCommand(state, commandStr);
             command.run();
         }
     }
@@ -55,13 +76,18 @@ class AppStateImpl implements AppState {
     }
 
     @Override
-    public void setDefaults(String phrase, DictionaryWord translation) {
+    public void setTranslation(String phrase, DictionaryWord translation) {
         this.translations.put(phrase, Arrays.asList(translation));
     }
 
     @Override
     public Map<String, List<DictionaryWord>> getTranslations() {
         return new HashMap<String, List<DictionaryWord>>(translations);
+    }
+
+    @Override
+    public ClientsFactory clients() {
+        return new ClientsFactoryImpl(translations);
     }
 }
 
@@ -82,3 +108,40 @@ class View {
     }
 }
 
+class ClientsFactoryImpl implements AppState.ClientsFactory {
+
+    final private Map<String, List<DictionaryWord>> fallbackTranslations;
+
+    public ClientsFactoryImpl(Map<String, List<DictionaryWord>> fallbackTranslations) {
+        this.fallbackTranslations = fallbackTranslations;
+    }
+
+    public DictionaryClient getDictDictionary() {
+        return new FallbackStubClient(fallbackTranslations,
+                new LoggingWrapper(
+                        new ArtificialSleepWrapper(
+                                new DictDictionaryClient()
+                        )
+                )
+        );
+    }
+
+    public DictionaryClient getBablaDictionary() {
+        return new FallbackStubClient(fallbackTranslations,
+                new LoggingWrapper(
+                        new ArtificialSleepWrapper(
+                                new BablaDictionaryClient()
+                        )
+                )
+        );
+    }
+
+    public ProfanityCheckClient getProfanityClient() {
+        return new ProfanityFallbackStubClient(
+                new com.foo.dictionary.translations.profanity.LoggingWrapper(
+                        new PurgoProfanityCheckClient()
+                )
+        );
+    }
+
+}

@@ -1,12 +1,10 @@
 package com.foo.dictionary.translations.command;
 
-import com.foo.dictionary.App;
+import com.foo.dictionary.AppState;
 import com.foo.dictionary.commands.Command;
 import com.foo.dictionary.commands.Commands;
 import com.foo.dictionary.translations.client.DictionaryClient;
 import com.foo.dictionary.translations.profanity.ProfanityCheckClient;
-import com.foo.dictionary.translations.profanity.ProfanityFallbackStubClient;
-import com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,17 +15,19 @@ import java.util.List;
 public class BatchTranslateCommand implements Command {
 
     private static Logger log = LoggerFactory.getLogger(BatchTranslateCommand.class);
-    final static String DEFAULT_FILE = "/batch.csv";
-    final String file;
+    private final static String DEFAULT_FILE = "/batch.csv";
+    private final String file;
+    private final AppState state;
 
-    public BatchTranslateCommand(String commandStr) {
-        file = Commands.trimCommandWord(commandStr);
+    public BatchTranslateCommand(AppState state, String commandStr) {
+        this.state = state;
+        this.file = Commands.trimCommandWord(commandStr);
     }
 
     @Override
     public void run() {
-        final DictionaryClient client = ClientsFactory.getBablaDictionary();
-        final ProfanityCheckClient profanityCheck = ClientsFactory.getProfanityClient();
+        final DictionaryClient client = state.clients().getBablaDictionary();
+        final ProfanityCheckClient profanityCheck = state.clients().getProfanityClient();
         final InputStream fileStream = openFileOrDefault(file);
 
         List<String> wordsToTranslate = new ArrayList<String>();
@@ -46,7 +46,7 @@ public class BatchTranslateCommand implements Command {
 
         for (String s: wordsToTranslate) {
             if (!profanityCheck.isObscenityWord(s)) {
-                App.APPLICATION_STATE.setDefaults(s, client.firstTranslationFor(s));
+                state.setTranslation(s, client.firstTranslationFor(s));
             }
         }
     }

@@ -1,25 +1,26 @@
 package com.foo.dictionary.commands;
 
+import com.foo.dictionary.AppState;
 import com.foo.dictionary.translations.command.BatchTranslateCommand;
 import com.foo.dictionary.translations.command.SyncTranslateCommand;
 
 public class CommandsFactory {
 
-    public Command createCommand(String commandStr) {
+    public Command createCommand(AppState state, String commandStr) {
         if (Commands.isNull(commandStr)) {
             return new VoidCommand();
         }
 
         if (commandStr.trim().equals("exit")) {
-            return new ExitCommand();
+            return new ExitCommand(state);
         }
 
         if (commandStr.trim().startsWith("translate")) {
-            return new SyncTranslateCommand(commandStr);
+            return new SyncTranslateCommand(state, commandStr);
         }
 
         if (commandStr.trim().startsWith("batch")) {
-            return new BatchTranslateCommand(commandStr);
+            return new BatchTranslateCommand(state, commandStr);
         }
 
         return new VoidCommand();

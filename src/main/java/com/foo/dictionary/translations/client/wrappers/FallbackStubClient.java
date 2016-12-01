@@ -1,24 +1,22 @@
 package com.foo.dictionary.translations.client.wrappers;
 
-import com.foo.dictionary.App;
 import com.foo.dictionary.translations.DictionaryWord;
 import com.foo.dictionary.translations.client.BablaDictionaryClient;
-import com.foo.dictionary.translations.client.DictDictionaryClient;
 import com.foo.dictionary.translations.client.DictionaryClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FallbackStubClient implements DictionaryClient {
 
 	private static final Logger log = LoggerFactory.getLogger(FallbackStubClient.class);
 
 	private final DictionaryClient target;
+	private final Map<String, List<DictionaryWord>> fallbackTranslations;
 
-	public FallbackStubClient(DictionaryClient target) {
+	public FallbackStubClient(Map<String, List<DictionaryWord>> translations, DictionaryClient target) {
+		this.fallbackTranslations = translations;
 		this.target = target;
 	}
 
@@ -28,9 +26,8 @@ public class FallbackStubClient implements DictionaryClient {
 			return target.firstTranslationFor(word);
 		} catch (Exception e) {
 			log.warn("Problem retrieving word `{}`", word, e);
-			Map<String, List<DictionaryWord>> translations = App.APPLICATION_STATE.getTranslations();
-			if (translations.containsKey(word)) {
-				return translations.get(word).get(0);
+			if (fallbackTranslations.containsKey(word)) {
+				return fallbackTranslations.get(word).get(0);
 			} else {
 				throw new RuntimeException(e);
 			}
@@ -43,10 +40,9 @@ public class FallbackStubClient implements DictionaryClient {
 			return target.allTranslationsFor(word);
 		} catch (Exception e) {
 			log.warn("Problem retrieving word `{}`", word, e);
-			Map<String, List<DictionaryWord>> translations = App.APPLICATION_STATE.getTranslations();
-			if (translations.containsKey(word)) {
+			if (fallbackTranslations.containsKey(word)) {
 				log.warn("Returning defaults for word: `{}`", word);
-				return translations.get(word);
+				return fallbackTranslations.get(word);
 			} else if ("home".equals(word)) {
 				return new BablaDictionaryClient(loadStubHtmlFromDisk(word)).allTranslationsFor(word);
 			} else {
