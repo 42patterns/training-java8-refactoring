@@ -3,8 +3,11 @@ package com.foo.dictionary.translations.command;
 import com.foo.dictionary.AppState;
 import com.foo.dictionary.commands.Command;
 import com.foo.dictionary.commands.Commands;
+import com.foo.dictionary.translations.DictionaryWord;
 import com.foo.dictionary.translations.client.DictionaryClient;
 import com.foo.dictionary.translations.profanity.ProfanityCheckClient;
+
+import java.util.List;
 
 // TODO: clone this class and make the profanity check call async with supplyAsync
 //  after that map it with actual translation with thenCompose() method
@@ -23,12 +26,16 @@ public class SyncTranslateCommand implements Command {
 
     @Override
     public void run() {
+        // tag::sync-code[]
         final DictionaryClient client = state.clients().getBablaDictionary();
         final ProfanityCheckClient profanityCheck = state.clients().getProfanityClient();
 
-        if (!profanityCheck.isObscenityWord(phrase)) {
-            state.setTranslations(phrase, client.allTranslationsFor(phrase));
+        boolean isObscenityWord = profanityCheck.isObscenityWord(phrase);
+        if (!isObscenityWord) {
+            List<DictionaryWord> translations = client.allTranslationsFor(phrase);
+            state.setTranslations(phrase, translations);
         }
+        // end::sync-code[]
     }
 
 }

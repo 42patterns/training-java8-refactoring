@@ -18,12 +18,18 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Function;
 
+import static java.util.Collections.emptyList;
+import static java.util.concurrent.CompletableFuture.completedFuture;
+import static java.util.concurrent.CompletableFuture.supplyAsync;
+
 // TODO: clone this class and make the profanity check call async with supplyAsync
 //  after that map it with actual translation with thenCompose() method
 //  how can we make the consecutive call not return
 //  profanity word translation at all? tip: use a completed Future with
 //  CompletableFuture.completedFuture()
 public class AsyncTranslateCommand implements Command {
+
+    final Function<List<DictionaryWord>, List<DictionaryWord>> it = Function.identity();
 
     private static Logger log = LoggerFactory.getLogger(AsyncTranslateCommand.class);
     final String phrase;
@@ -34,22 +40,47 @@ public class AsyncTranslateCommand implements Command {
         this.phrase = Commands.trimCommandWord(commandStr);
     }
 
+    @Deprecated
+    public void run_only_with_single_dictionary() {
+
+        // tag::async-code[]
+        final ProfanityCheckClient profanityCheck = state.clients().getProfanityClient();
+        final DictionaryClient bablaDictionary = state.clients().getBablaDictionary();
+
+        CompletableFuture<List<DictionaryWord>> future =
+                supplyAsync(() -> profanityCheck.isObscenityWord(phrase))
+                    .thenCompose(b -> b ? completedFuture(emptyList()) :
+                            supplyAsync(() -> bablaDictionary.allTranslationsFor(phrase))
+                    );
+
+        state.setTranslations(phrase, future.join());
+        // end::async-code[]
+    }
+
+
     @Override
     public void run() {
         final ProfanityCheckClient profanityCheck = state.clients().getProfanityClient();
         final DictionaryClient bablaDictionary = state.clients().getBablaDictionary();
         final DictionaryClient dictDictionary = state.clients().getDictDictionary();
 
-        // maybe the second call isn't made
+
+        // tag::async-either[]
+        CompletableFuture<Boolean> futureIsObscenity =
+            supplyAsync(() -> profanityCheck.isObscenityWord(phrase));
+        CompletableFuture<List<DictionaryWord>> futureDictTranslation =
+            supplyAsync(() -> dictDictionary.allTranslationsFor(phrase));
+        CompletableFuture<List<DictionaryWord>> futureBablaTranslation =
+            supplyAsync(() -> bablaDictionary.allTranslationsFor(phrase));
+
         CompletableFuture<List<DictionaryWord>> future =
-                CompletableFuture.supplyAsync(() -> profanityCheck.isObscenityWord(phrase))
-                    .thenCompose(b -> b ? CompletableFuture.completedFuture(Collections.emptyList()) :
-                            CompletableFuture.supplyAsync(() -> dictDictionary.allTranslationsFor(phrase))
-                                    .applyToEither(CompletableFuture.supplyAsync(() -> bablaDictionary.allTranslationsFor(phrase)),
-                                            Function.identity())
-                    );
+            futureIsObscenity
+                .thenCompose(b -> b ? completedFuture(emptyList()) :
+                    futureDictTranslation.applyToEither(futureBablaTranslation, it)
+                );
 
         state.setTranslations(phrase, future.join());
+        // end::async-either[]
     }
 
 }

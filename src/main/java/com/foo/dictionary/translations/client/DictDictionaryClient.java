@@ -30,11 +30,26 @@ public class DictDictionaryClient implements DictionaryClient {
         this.urlString = urlString;
     }
 
+    //tag::pre-optional-exception[]
+    @Deprecated
+    public DictionaryWord firstTranslationFor_Java7(String wordToFind) throws RuntimeException {
+        List<DictionaryWord> foundWords = allTranslationsFor(wordToFind);
+        if (foundWords != null && !foundWords.isEmpty()) {
+            return foundWords.get(0);
+        }
+
+        throw new RuntimeException("No words found");
+        //return null; //<1>
+    }
+    //end::pre-optional-exception[]
+
     @Override
+    //tag::optional[]
     public Optional<DictionaryWord> firstTranslationFor(String wordToFind) {
         List<DictionaryWord> foundWords = allTranslationsFor(wordToFind);
         return foundWords.stream().findFirst();
     }
+    //end::optional[]
 
     @Override
     //TODO: replace while loop and matching with a single method based on streams

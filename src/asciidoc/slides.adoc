@@ -1,0 +1,262 @@
+= 12 things we can do better with Java8
+Jakub Marchwicki <@kubem>
+:idprefix: slide_
+:icons: font
+:srcroot: ../main/java
+:srcfolder: {srcroot}/com/foo/dictionary
+:tstroot: ../test/java
+:tstfolder: {tstroot}/com/foo/dictionary
+:revealjs_transition: fade
+:revealjs_progress: false
+:revealjs_history: true
+:revealjs_controls: false
+:revealjs_customtheme: poang.css
+:revealjs_width: 1366
+:revealjs_height: 768
+
+
+== 5 things we can do better...
+
+Cause it used to be an hour presentation
+
+[%notitle]
+== Sad panda
+
+image::https://media.giphy.com/media/3e18NPUVzoxzO/giphy.gif[background, size=content]
+
+== About me
+
+Jakub Marchwicki::
+* developer
+* position wise: ex-architect, ex-manager, ex-consultant
+* domain wise: insurance, banking, massive scale marketing, customer service, edu
+cation
+* Twitter: @kubem
+
+== Join the workshop
+
+Kraków::
+Silicon Valley -> 1030 - 1230
+
+//Warszawa::
+//Silicon Valley -> 1400 - 1600
+
+== Flavours of the workshop
+
+* Java8 in tests
+* Optionals
+* Functional interfaces
+* Streams
+* Future operations
+
+== Java8 in tests
+
+=== !
+
+[source, java]
+.This was just bad
+----
+include::{tstfolder}/translations/client/BablaDictionaryClientTest.java[tags=test-exception, indent=0]
+----
+
+=== !
+
+[source, java]
+.This was slightly better
+----
+include::{tstfolder}/translations/client/BablaDictionaryClientTest.java[tags=test-try-catch, indent=0]
+----
+
+=== !
+
+[source, java]
+.Pass test as a method
+----
+include::{tstfolder}/translations/client/DictDictionaryClientTest.java[tags=test-method-reference, indent=0]
+----
+
+=== !
+
+[source, java]
+.Runnable is pretty generic lambda
+----
+include::{tstfolder}/translations/client/DictDictionaryClientTest.java[tags=test-method-catcher, indent=0]
+----
+
+=== !
+
+[source, java]
+.When exception is thrown
+----
+include::{tstfolder}/translations/client/DictDictionaryClientTest.java[tags=test-checked-method-catcher, indent=0]
+----
+
+== Optionals
+
+=== !
+
+[source, java]
+.Pre JDK8 times
+----
+include::{srcfolder}/translations/client/DictDictionaryClient.java[tags=pre-optional-exception, indent=0]
+----
+<1> Noone knew which was worse: runtime exception of null value
+
+=== !
+
+[source, java]
+----
+include::{srcfolder}/translations/client/DictDictionaryClient.java[tags=optional, indent=0]
+----
+
+== Functional interfaces
+
+=== !
+
+[source, java]
+.Lamdas to pass function interfaces
+----
+DoubleFunction = d -> Double::sqrt;
+----
+
+[source, java]
+----
+@FunctionalInterface
+public interface Function<T, R> {
+    R apply(T t);
+}
+----
+
+[source, java]
+----
+@FunctionalInterface
+public interface Supplier<T> {
+    T get();
+}
+----
+
+=== !
+
+[source, java]
+.Lazy evaluation in logs
+log.trace(() -> "Lazy evaluated message with expensive toString: " + obj)
+
+[source, java]
+----
+default void trace(Supplier<String> messageSupplier) {
+    if (isTraceEnabled()) {
+        trace(messageSupplier.get());
+    }
+}
+----
+
+== Streams
+
+=== !
+
+image::iteration_1.png[background, size=contain]
+
+=== !
+
+image::iteration_2-list.png[background, size=contain]
+
+=== !
+
+image::iteration_3-limit.png[background, size=contain]
+
+=== !
+
+image::iteration_4-file.png[background, size=contain]
+
+=== !
+
+image::iteration_5-filter.png[background, size=contain]
+
+=== !
+
+image::stream_1.png[background, size=contain]
+
+=== !
+
+image::stream_2-filter.png[background, size=contain]
+
+=== !
+
+image::stream_3-limit.png[background, size=contain]
+
+=== !
+
+image::stream_4-list.png[background, size=contain]
+
+=== !
+
+image::stream_5-file.png[background, size=contain]
+
+
+== File handling + Streams
+
+=== !
+
+[source, java]
+----
+include::{srcfolder}/translations/command/BatchTranslateCommand.java[tags=file-java7, indent=0]
+----
+
+=== !
+
+[source, java]
+----
+include::{srcfolder}/translations/command/BatchTranslateCommand.java[tags=file-with-streams, indent=0]
+----
+
+== Future<T>
+
+=== !
+
+[source, java]
+.Synchronous code
+----
+include::{srcfolder}/translations/command/SyncTranslateCommand.java[tags=sync-code, indent=0]
+----
+
+=== !
+
+[source, java]
+.Asynchronous code
+----
+include::{srcfolder}/translations/command/AsyncTranslateCommand.java[tags=async-code, indent=0]
+----
+
+=== !
+
+[source, java]
+.Asynchronous code
+----
+include::{srcfolder}/translations/command/AsyncTranslateCommand.java[tags=async-either, indent=0]
+----
+
+== Flavours of the workshop
+
+[%hardbreaks]
+* icon:check-square-o[fw] Java8 in tests
+* icon:check-square-o[fw] Optionals
+* icon:check-square-o[fw] Functional interfaces
+* icon:check-square-o[fw] Streams
+* icon:check-square-o[fw] Future operations
+
+== Thank you icon:heart[]
+
+[cols="2,9", frame="none", grid="none"]
+|===
+| icon:twitter[]
+| Jakub Marchwicki<link:https://twitter.com/kubem[@kubem]>
+
+| icon:calendar[]
+| Join the workshop! +
+  *Silicon Valley -> 1030 - 1230*
+//*Silicon Valley -> 1400 - 1600*
+
+| icon:github[]
+| Slides and code +
+-> https://goo.gl/BTdF2s
+|===

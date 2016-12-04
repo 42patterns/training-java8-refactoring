@@ -49,17 +49,20 @@ public class DictDictionaryClientTest {
         assertThat(maybeHome.isPresent(), equalTo(false));
     }
 
-    @Test
     @Ignore
+    // tag::test-method-reference[]
+    @Test
     public void should_throw_exception_when_no_single_word_found() {
         DictDictionaryClient client = new DictDictionaryClient("wrong-url");
-        Optional<Throwable> thrown = assertThrown(() -> client.firstTranslationFor("home"));
+        Optional<Throwable> thrown = assertThrown(()
+                -> client.firstTranslationFor("home"));
 
         assertThat(thrown.isPresent(), equalTo(true));
     }
+    // end::test-method-reference[]
 
-    @Test
     @Ignore
+    @Test
     public void should_fail_when_no_single_word_found() {
         DictDictionaryClient client = new DictDictionaryClient("wrong-url");
         Optional<Throwable> e = assertThrown(() -> client.firstTranslationFor("home"));
@@ -69,6 +72,7 @@ public class DictDictionaryClientTest {
         assertThat(e.get().getMessage(), equalTo("No words found"));
     }
 
+    // tag::test-method-catcher[]
     private Optional<Throwable> assertThrown(Runnable command) {
         try {
             command.run();
@@ -77,5 +81,21 @@ public class DictDictionaryClientTest {
             return Optional.of(t);
         }
     }
+    // end::test-method-catcher[]
+
+    // tag::test-checked-method-catcher[]
+    private interface CheckedRunnable {
+        public void run() throws Exception;
+    }
+
+    private Optional<Throwable> checkedAssertThrown(CheckedRunnable command) {
+        try {
+            command.run();
+            return Optional.empty();
+        } catch (Throwable t) {
+            return Optional.of(t);
+        }
+    }
+    // end::test-checked-method-catcher[]
 
 }

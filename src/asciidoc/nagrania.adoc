@@ -1,0 +1,140 @@
+// = Ściąga na nagrania infoShare Academy
+
+== Testy #1
+
+[source, java]
+.Catch
+----
+@Ignore
+// tag::test-method-reference[]
+@Test
+public void should_throw_exception_when_no_single_word_found() {
+    DictDictionaryClient client = new DictDictionaryClient("wrong-url");
+    Optional<Throwable> thrown = assertThrown(()
+            -> client.firstTranslationFor("home"));
+
+    assertThat(thrown.isPresent(), equalTo(true));
+}
+// end::test-method-reference[]
+
+// tag::test-method-catcher[]
+private Optional<Throwable> assertThrown(Runnable command) {
+    try {
+        command.run();
+        return Optional.empty();
+    } catch (Throwable t) {
+        return Optional.of(t);
+    }
+}
+// end::test-method-catcher[]
+----
+
+== Testy #2
+
+[source, java]
+.CheckedSupplier
+----
+// tag::test-checked-method-catcher[]
+private interface CheckedRunnable {
+    public void run() throws Exception;
+}
+
+private Optional<Throwable> checkedAssertThrown(CheckedRunnable command) {
+    try {
+        command.run();
+        return Optional.empty();
+    } catch (Throwable t) {
+        return Optional.of(t);
+    }
+}
+// end::test-checked-method-catcher[]
+----
+
+== Optional #1
+
+[source, java]
+----
+@Override
+public Optional<DictionaryWord> firstTranslationFor(String wordToFind) {
+    List<DictionaryWord> foundWords = allTranslationsFor(wordToFind);
+    return foundWords.stream().findFirst();
+}
+----
+
+== Simple stream()
+
+[source, java]
+.SimpleStream
+----
+@Test
+public void stream() throws IOException, URISyntaxException {
+
+    List<String> warnings = Files.lines(Paths.get(url.toURI()))
+            .filter(l -> l.contains("WARN"))
+            .limit(10)
+            .collect(Collectors.toList());
+
+    warnings.forEach(System.out::println);
+}
+----
+
+== File operations stream
+
+[source, java]
+.BatchTranslateCommand
+----
+try (BufferedReader reader = new BufferedReader(
+        new InputStreamReader(openFileOrDefault(file))
+)) {
+
+    reader.lines()
+            .skip(1)
+            .filter(s -> !profanityCheck.isObscenityWord(s))
+            .map(s -> new AbstractMap.SimpleEntry<>(s, client.firstTranslationFor(s)))
+            .filter(e -> e.getValue().isPresent())
+            .forEach(e -> App.APPLICATION_STATE.setDefaults(e.getKey(), e.getValue().get()));
+
+} catch (IOException e) {
+    log.info("Problem reading stream: ", e);
+}
+----
+
+== Optional + Stream #2
+
+[source, java]
+----
+class Tuple <T, U> extends AbstractMap.SimpleEntry<T, U> {
+    public Tuple(T key, U value) {
+        super(key, value);
+    }
+}
+----
+
+[source, java]
+----
+reader.lines()
+    .skip(1)
+    .filter(s -> !profanityCheck.isObscenityWord(s))
+    .map(s -> new Tuple<>(s, client.firstTranslationFor(s)))
+    .filter(e -> e.getValue().isPresent())
+    .forEach(e -> App.APPLICATION_STATE.setDefaults(e.getKey(), e.getValue().get()));
+----
+
+[source, java]
+----
+private Stream<Tuple<DictionaryWord>> tupleStream(Tuple<Optional<DictionaryWord>> t) {
+    return t.getValue().map(dictionaryWord ->
+            Stream.of(new Tuple<>(t.getKey(), dictionaryWord))).orElseGet(Stream::empty);
+}
+----
+
+[source, java]
+----
+reader.lines()
+    .skip(1)
+    .filter(s -> !profanityCheck.isObscenityWord(s))
+    .map(s -> new Tuple<>(s, client.firstTranslationFor(s)))
+    .flatMap(t -> tupleStream(t))
+    .forEach(e -> App.APPLICATION_STATE.setDefaults(e.getKey(), e.getValue()));
+----
+

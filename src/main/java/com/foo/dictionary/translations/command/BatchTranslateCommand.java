@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -25,6 +27,33 @@ public class BatchTranslateCommand implements Command {
         this.file = Commands.trimCommandWord(commandStr);
     }
 
+    @Deprecated
+    public void run_Java7() {
+        final DictionaryClient client = state.clients().getBablaDictionary();
+        final ProfanityCheckClient profanityCheck = state.clients().getProfanityClient();
+
+        //tag::file-java7[]
+        List<String> wordsToTranslate = new ArrayList<String>();
+
+        final InputStream fs = openFileOrDefault(file);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(fs));
+        try {
+            String line = reader.readLine();    //<1>
+            line = reader.readLine();
+            while (line != null) {
+                wordsToTranslate.add(line);
+                line = reader.readLine();
+            }
+        } catch (IOException e) {}
+
+        for (String s: wordsToTranslate) {
+            if (!profanityCheck.isObscenityWord(s)) {
+                state.setTranslation(s, client.firstTranslationFor(s).get());
+            }
+        }
+        //end::file-java7[]
+    }
+
     //TODO: replace CSV handling with a BufferedReader.lines()
     //      - use skip() if not all lines are required
     @Override
@@ -32,6 +61,7 @@ public class BatchTranslateCommand implements Command {
         final DictionaryClient client = state.clients().getBablaDictionary();
         final ProfanityCheckClient profanityCheck = state.clients().getProfanityClient();
 
+        //tag::file-with-streams[]
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(openFileOrDefault(file))
         )) {
@@ -49,6 +79,7 @@ public class BatchTranslateCommand implements Command {
         } catch (IOException e) {
             log.info("Problem reading stream: ", e);
         }
+        //end::file-with-streams[]
     }
 
     private InputStream openFileOrDefault(String filename) {

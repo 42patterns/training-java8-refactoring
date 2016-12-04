@@ -1,0 +1,437 @@
+20:34:37.412 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(house)
+20:34:38.231 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(house): obscene=false
+20:34:38.231 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(house)
+20:34:39.216 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(house): results.size(8)
+20:35:17.648 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(house)
+20:35:18.412 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(house): obscene=false
+20:35:18.412 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(house)
+20:35:19.609 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(house): results.size(8)
+20:36:22.228 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(house)
+20:36:22.831 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(house): obscene=false
+20:36:22.832 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(house)
+20:36:23.855 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(house): results.size(8)
+21:35:38.231 [main] INFO  c.f.d.t.c.BatchTranslateCommand - Cannot open file= reason= (No such file or directory) - fallback to default
+21:35:38.241 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(good morning)
+21:35:39.059 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(good morning): obscene=false
+21:35:39.059 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(good morning)
+21:35:40.034 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(good morning): results.size(1)
+21:35:40.036 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(hello)
+21:35:40.665 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(hello): obscene=false
+21:35:40.665 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(hello)
+21:35:41.630 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(hello): results.size(12)
+21:35:41.632 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(how are you)
+21:35:42.263 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(how are you): obscene=false
+21:35:42.263 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(how are you)
+21:35:43.119 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(how are you): results.size(9)
+21:35:43.122 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(home)
+21:35:43.964 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(home): obscene=false
+21:35:43.965 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(home)
+21:35:44.975 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(home): results.size(23)
+21:35:44.976 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(developer)
+21:35:45.457 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(developer): obscene=false
+21:35:45.457 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(developer)
+21:35:46.561 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(developer): results.size(17)
+21:35:46.562 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(please)
+21:35:47.064 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(please): obscene=false
+21:35:47.064 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(please)
+21:35:48.256 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(please): results.size(16)
+21:35:48.256 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(bear)
+21:35:48.761 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(bear): obscene=false
+21:35:48.761 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(bear)
+21:35:49.836 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(bear): results.size(11)
+21:35:49.838 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(beer)
+21:35:50.457 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(beer): obscene=false
+21:35:50.458 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(beer)
+21:35:51.728 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(beer): results.size(2)
+21:35:51.730 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(home)
+21:35:52.160 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(home): obscene=false
+21:35:52.160 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(home)
+21:35:53.114 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(home): results.size(23)
+21:35:53.115 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(house)
+21:35:53.661 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(house): obscene=false
+21:35:53.662 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(house)
+21:35:54.709 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(house): results.size(8)
+21:43:08.665 [main] INFO  c.f.d.t.c.BatchTranslateCommand - Cannot open file= reason= (No such file or directory) - fallback to default
+21:43:08.673 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(good morning)
+21:43:09.319 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(good morning): obscene=false
+21:43:09.320 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(good morning)
+21:43:10.075 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(good morning): results.size(1)
+21:43:10.076 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(hello)
+21:43:10.786 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(hello): obscene=false
+21:43:10.786 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(hello)
+21:43:11.677 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(hello): results.size(12)
+21:43:11.680 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(how are you)
+21:43:12.185 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(how are you): obscene=false
+21:43:12.185 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(how are you)
+21:43:12.958 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(how are you): results.size(9)
+21:43:12.960 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(home)
+21:43:13.407 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(home): obscene=false
+21:43:13.408 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(home)
+21:43:14.855 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(home): results.size(23)
+21:43:14.856 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(developer)
+21:43:15.475 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(developer): obscene=false
+21:43:15.475 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(developer)
+21:43:16.525 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(developer): results.size(17)
+21:43:16.527 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(please)
+21:43:17.187 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(please): obscene=false
+21:43:17.187 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(please)
+21:43:18.300 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(please): results.size(16)
+21:43:18.302 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(bear)
+21:43:18.800 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(bear): obscene=false
+21:43:18.800 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(bear)
+21:43:19.924 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(bear): results.size(11)
+21:43:19.925 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(beer)
+21:43:20.476 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(beer): obscene=false
+21:43:20.476 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(beer)
+21:43:21.507 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(beer): results.size(2)
+21:43:21.508 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(home)
+21:43:22.185 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(home): obscene=false
+21:43:22.185 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(home)
+21:43:23.235 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(home): results.size(23)
+21:43:23.237 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(house)
+21:43:23.693 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(house): obscene=false
+21:43:23.694 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(house)
+21:43:24.547 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(house): results.size(8)
+21:43:39.403 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(house)
+21:43:39.436 [main] WARN  c.f.d.t.p.PurgoProfanityCheckClient - Problem getting profanity check for house
+java.net.UnknownHostException: www.purgomalum.com
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184) ~[na:1.8.0_92]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_92]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1513) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441) ~[na:1.8.0_92]
+	at java.net.URL.openStream(URL.java:1045) ~[na:1.8.0_92]
+	at com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient.isObscenityWord(PurgoProfanityCheckClient.java:21) ~[classes/:na]
+	at com.foo.dictionary.translations.profanity.LoggingWrapper.isObscenityWord(LoggingWrapper.java:26) [classes/:na]
+	at com.foo.dictionary.translations.profanity.ProfanityFallbackStubClient.isObscenityWord(ProfanityFallbackStubClient.java:24) [classes/:na]
+	at com.foo.dictionary.translations.command.SyncTranslateCommand.run(SyncTranslateCommand.java:23) [classes/:na]
+	at com.foo.dictionary.App.main(App.java:29) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147) [idea_rt.jar:na]
+21:43:39.438 [main] WARN  c.f.d.t.p.ProfanityFallbackStubClient - Problem w. profanity check for 'house'
+java.lang.RuntimeException: java.net.UnknownHostException: www.purgomalum.com
+	at com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient.isObscenityWord(PurgoProfanityCheckClient.java:26) ~[classes/:na]
+	at com.foo.dictionary.translations.profanity.LoggingWrapper.isObscenityWord(LoggingWrapper.java:26) ~[classes/:na]
+	at com.foo.dictionary.translations.profanity.ProfanityFallbackStubClient.isObscenityWord(ProfanityFallbackStubClient.java:24) ~[classes/:na]
+	at com.foo.dictionary.translations.command.SyncTranslateCommand.run(SyncTranslateCommand.java:23) [classes/:na]
+	at com.foo.dictionary.App.main(App.java:29) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147) [idea_rt.jar:na]
+Caused by: java.net.UnknownHostException: www.purgomalum.com
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184) ~[na:1.8.0_92]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_92]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1513) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441) ~[na:1.8.0_92]
+	at java.net.URL.openStream(URL.java:1045) ~[na:1.8.0_92]
+	at com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient.isObscenityWord(PurgoProfanityCheckClient.java:21) ~[classes/:na]
+	... 9 common frames omitted
+21:43:39.439 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(house)
+21:43:39.441 [main] WARN  c.f.d.t.client.BablaDictionaryClient - Couldn't process the stream http://pl.bab.la/slownik/angielski-polski/house. Empty list
+21:43:41.568 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(house): results.size(0)
+21:45:03.959 [main] INFO  c.f.d.t.c.BatchTranslateCommand - Cannot open file= reason= (No such file or directory) - fallback to default
+21:45:03.966 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(good morning)
+21:45:03.987 [main] WARN  c.f.d.t.p.PurgoProfanityCheckClient - Problem getting profanity check for good morning
+java.net.UnknownHostException: www.purgomalum.com
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184) ~[na:1.8.0_92]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_92]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1513) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441) ~[na:1.8.0_92]
+	at java.net.URL.openStream(URL.java:1045) ~[na:1.8.0_92]
+	at com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient.isObscenityWord(PurgoProfanityCheckClient.java:21) ~[classes/:na]
+	at com.foo.dictionary.translations.profanity.LoggingWrapper.isObscenityWord(LoggingWrapper.java:26) [classes/:na]
+	at com.foo.dictionary.translations.profanity.ProfanityFallbackStubClient.isObscenityWord(ProfanityFallbackStubClient.java:24) [classes/:na]
+	at com.foo.dictionary.translations.command.BatchTranslateCommand.run(BatchTranslateCommand.java:50) [classes/:na]
+	at com.foo.dictionary.App.main(App.java:29) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147) [idea_rt.jar:na]
+21:45:03.989 [main] WARN  c.f.d.t.p.ProfanityFallbackStubClient - Problem w. profanity check for 'good morning'
+java.lang.RuntimeException: java.net.UnknownHostException: www.purgomalum.com
+	at com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient.isObscenityWord(PurgoProfanityCheckClient.java:26) ~[classes/:na]
+	at com.foo.dictionary.translations.profanity.LoggingWrapper.isObscenityWord(LoggingWrapper.java:26) ~[classes/:na]
+	at com.foo.dictionary.translations.profanity.ProfanityFallbackStubClient.isObscenityWord(ProfanityFallbackStubClient.java:24) ~[classes/:na]
+	at com.foo.dictionary.translations.command.BatchTranslateCommand.run(BatchTranslateCommand.java:50) [classes/:na]
+	at com.foo.dictionary.App.main(App.java:29) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147) [idea_rt.jar:na]
+Caused by: java.net.UnknownHostException: www.purgomalum.com
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184) ~[na:1.8.0_92]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_92]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1513) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441) ~[na:1.8.0_92]
+	at java.net.URL.openStream(URL.java:1045) ~[na:1.8.0_92]
+	at com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient.isObscenityWord(PurgoProfanityCheckClient.java:21) ~[classes/:na]
+	... 9 common frames omitted
+21:45:03.989 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(good morning)
+21:45:03.991 [main] WARN  c.f.d.t.client.BablaDictionaryClient - Couldn't process the stream http://pl.bab.la/slownik/angielski-polski/good-morning. Empty list
+21:45:03.992 [main] WARN  c.f.d.t.c.w.FallbackStubClient - Problem retrieving word `good morning`
+java.lang.RuntimeException: java.net.UnknownHostException: pl.bab.la
+	at com.foo.dictionary.translations.client.BablaDictionaryClient.allTranslationsFor(BablaDictionaryClient.java:56) ~[classes/:na]
+	at com.foo.dictionary.translations.client.wrappers.ArtificialSleepWrapper.allTranslationsFor(ArtificialSleepWrapper.java:31) ~[classes/:na]
+	at com.foo.dictionary.translations.client.wrappers.LoggingWrapper.allTranslationsFor(LoggingWrapper.java:33) ~[classes/:na]
+	at com.foo.dictionary.translations.client.wrappers.FallbackStubClient.allTranslationsFor(FallbackStubClient.java:43) ~[classes/:na]
+	at com.foo.dictionary.translations.command.BatchTranslateCommand.run(BatchTranslateCommand.java:51) [classes/:na]
+	at com.foo.dictionary.App.main(App.java:29) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147) [idea_rt.jar:na]
+Caused by: java.net.UnknownHostException: pl.bab.la
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184) ~[na:1.8.0_92]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_92]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1513) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441) ~[na:1.8.0_92]
+	at java.net.URL.openStream(URL.java:1045) ~[na:1.8.0_92]
+	at com.foo.dictionary.translations.client.BablaDictionaryClient.allTranslationsFor(BablaDictionaryClient.java:46) ~[classes/:na]
+	... 10 common frames omitted
+21:45:37.587 [main] INFO  c.f.d.t.c.BatchTranslateCommand - Cannot open file= reason= (No such file or directory) - fallback to default
+21:45:37.594 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(good morning)
+21:45:38.205 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(good morning): obscene=false
+21:45:38.206 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(good morning)
+21:45:39.360 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(good morning): results.size(1)
+21:45:39.361 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(hello)
+21:45:39.799 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(hello): obscene=false
+21:45:39.799 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(hello)
+21:45:40.713 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(hello): results.size(12)
+21:45:40.715 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(how are you)
+21:45:41.191 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(how are you): obscene=false
+21:45:41.192 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(how are you)
+21:45:41.995 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(how are you): results.size(9)
+21:45:41.997 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(home)
+21:45:42.584 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(home): obscene=false
+21:45:42.584 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(home)
+21:45:43.580 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(home): results.size(23)
+21:45:43.581 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(developer)
+21:45:44.192 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(developer): obscene=false
+21:45:44.192 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(developer)
+21:45:45.139 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(developer): results.size(17)
+21:45:45.141 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(please)
+21:45:45.599 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(please): obscene=false
+21:45:45.599 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(please)
+21:45:46.661 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(please): results.size(16)
+21:45:46.663 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(bear)
+21:45:47.192 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(bear): obscene=false
+21:45:47.193 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(bear)
+21:45:48.280 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(bear): results.size(11)
+21:45:48.282 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(beer)
+21:45:48.889 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(beer): obscene=false
+21:45:48.889 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(beer)
+21:45:50.059 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(beer): results.size(2)
+21:45:50.061 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(home)
+21:45:50.592 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(home): obscene=false
+21:45:50.592 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(home)
+21:45:51.512 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(home): results.size(23)
+21:45:51.513 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(house)
+21:45:52.096 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(house): obscene=false
+21:45:52.097 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(house)
+21:45:53.182 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(house): results.size(8)
+21:46:07.877 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(house)
+21:46:07.896 [main] WARN  c.f.d.t.p.PurgoProfanityCheckClient - Problem getting profanity check for house
+java.net.UnknownHostException: www.purgomalum.com
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184) ~[na:1.8.0_92]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_92]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1513) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441) ~[na:1.8.0_92]
+	at java.net.URL.openStream(URL.java:1045) ~[na:1.8.0_92]
+	at com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient.isObscenityWord(PurgoProfanityCheckClient.java:21) ~[classes/:na]
+	at com.foo.dictionary.translations.profanity.LoggingWrapper.isObscenityWord(LoggingWrapper.java:26) [classes/:na]
+	at com.foo.dictionary.translations.profanity.ProfanityFallbackStubClient.isObscenityWord(ProfanityFallbackStubClient.java:24) [classes/:na]
+	at com.foo.dictionary.translations.command.SyncTranslateCommand.run(SyncTranslateCommand.java:23) [classes/:na]
+	at com.foo.dictionary.App.main(App.java:29) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147) [idea_rt.jar:na]
+21:46:07.898 [main] WARN  c.f.d.t.p.ProfanityFallbackStubClient - Problem w. profanity check for 'house'
+java.lang.RuntimeException: java.net.UnknownHostException: www.purgomalum.com
+	at com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient.isObscenityWord(PurgoProfanityCheckClient.java:26) ~[classes/:na]
+	at com.foo.dictionary.translations.profanity.LoggingWrapper.isObscenityWord(LoggingWrapper.java:26) ~[classes/:na]
+	at com.foo.dictionary.translations.profanity.ProfanityFallbackStubClient.isObscenityWord(ProfanityFallbackStubClient.java:24) ~[classes/:na]
+	at com.foo.dictionary.translations.command.SyncTranslateCommand.run(SyncTranslateCommand.java:23) [classes/:na]
+	at com.foo.dictionary.App.main(App.java:29) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147) [idea_rt.jar:na]
+Caused by: java.net.UnknownHostException: www.purgomalum.com
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184) ~[na:1.8.0_92]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_92]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1513) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441) ~[na:1.8.0_92]
+	at java.net.URL.openStream(URL.java:1045) ~[na:1.8.0_92]
+	at com.foo.dictionary.translations.profanity.PurgoProfanityCheckClient.isObscenityWord(PurgoProfanityCheckClient.java:21) ~[classes/:na]
+	... 9 common frames omitted
+21:46:07.904 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(house)
+21:46:07.905 [main] WARN  c.f.d.t.client.BablaDictionaryClient - Couldn't process the stream http://pl.bab.la/slownik/angielski-polski/house. Empty list
+21:46:07.907 [main] WARN  c.f.d.t.c.w.FallbackStubClient - Problem retrieving word `house`
+java.lang.RuntimeException: java.net.SocketException: Network is unreachable
+	at com.foo.dictionary.translations.client.BablaDictionaryClient.allTranslationsFor(BablaDictionaryClient.java:56) ~[classes/:na]
+	at com.foo.dictionary.translations.client.wrappers.ArtificialSleepWrapper.allTranslationsFor(ArtificialSleepWrapper.java:31) ~[classes/:na]
+	at com.foo.dictionary.translations.client.wrappers.LoggingWrapper.allTranslationsFor(LoggingWrapper.java:33) ~[classes/:na]
+	at com.foo.dictionary.translations.client.wrappers.FallbackStubClient.allTranslationsFor(FallbackStubClient.java:43) ~[classes/:na]
+	at com.foo.dictionary.translations.command.SyncTranslateCommand.run(SyncTranslateCommand.java:24) [classes/:na]
+	at com.foo.dictionary.App.main(App.java:29) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_92]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_92]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_92]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_92]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147) [idea_rt.jar:na]
+Caused by: java.net.SocketException: Network is unreachable
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_92]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_92]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_92]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_92]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_92]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_92]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_92]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1169) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1105) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:999) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:933) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1513) ~[na:1.8.0_92]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441) ~[na:1.8.0_92]
+	at java.net.URL.openStream(URL.java:1045) ~[na:1.8.0_92]
+	at com.foo.dictionary.translations.client.BablaDictionaryClient.allTranslationsFor(BablaDictionaryClient.java:46) ~[classes/:na]
+	... 10 common frames omitted
+21:48:14.473 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(house)
+21:48:15.092 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(house): obscene=false
+21:48:15.092 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(house)
+21:48:16.116 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(house): results.size(8)
+22:49:23.525 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(house)
+22:49:24.079 [main] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(house): obscene=false
+22:49:24.079 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(house)
+22:49:25.731 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(house): results.size(8)
+22:49:28.174 [main] INFO  c.f.d.t.c.BatchTranslateCommand - Cannot open file= reason= (No such file or directory) - fallback to default
+22:49:28.763 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering firstTranslationFor(good morning)
+22:49:29.865 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving firstTranslationFor(good morning): Optional[DictionaryWord{englishWord='good morning', polishWord='dzień dobry'}]
+22:49:30.474 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering firstTranslationFor(hello)
+22:49:32.117 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving firstTranslationFor(hello): Optional[DictionaryWord{englishWord='hello', polishWord='witaj'}]
+22:49:32.673 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering firstTranslationFor(how are you)
+22:49:33.790 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving firstTranslationFor(how are you): Optional[DictionaryWord{englishWord='how are you?', polishWord='jak się masz?'}]
+22:49:34.370 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering firstTranslationFor(home)
+22:49:37.761 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving firstTranslationFor(home): Optional[DictionaryWord{englishWord='home', polishWord='dom'}]
+22:49:38.478 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering firstTranslationFor(developer)
+22:49:41.095 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving firstTranslationFor(developer): Optional[DictionaryWord{englishWord='developer', polishWord='deweloper'}]
+22:49:41.670 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering firstTranslationFor(please)
+22:49:43.788 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving firstTranslationFor(please): Optional[DictionaryWord{englishWord='please', polishWord='proszę'}]
+22:49:44.377 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering firstTranslationFor(bear)
+22:49:46.600 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving firstTranslationFor(bear): Optional[DictionaryWord{englishWord='bear', polishWord='niedźwiedź'}]
+22:49:47.087 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering firstTranslationFor(beer)
+22:49:48.074 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving firstTranslationFor(beer): Optional[DictionaryWord{englishWord='beer', polishWord='piwo'}]
+22:49:48.581 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering firstTranslationFor(home)
+22:49:51.993 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving firstTranslationFor(home): Optional[DictionaryWord{englishWord='home', polishWord='dom'}]
+22:49:52.482 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering firstTranslationFor(house)
+22:49:54.533 [main] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving firstTranslationFor(house): Optional[DictionaryWord{englishWord='house', polishWord='dom'}]
+22:51:52.806 [ForkJoinPool.commonPool-worker-1] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(home)
+22:51:53.585 [ForkJoinPool.commonPool-worker-1] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(home): obscene=false
+22:51:53.588 [ForkJoinPool.commonPool-worker-2] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(home)
+22:51:56.287 [ForkJoinPool.commonPool-worker-2] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(home): results.size(23)
+23:07:21.028 [ForkJoinPool.commonPool-worker-1] DEBUG c.f.d.t.profanity.LoggingWrapper - Entering profanityCheck(sdfghjkl)
+23:07:21.693 [ForkJoinPool.commonPool-worker-1] DEBUG c.f.d.t.profanity.LoggingWrapper - Leaving profanityCheck(sdfghjkl): obscene=false
+23:07:21.697 [ForkJoinPool.commonPool-worker-2] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(sdfghjkl)
+23:07:21.699 [ForkJoinPool.commonPool-worker-3] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Entering allTranslationsFor(sdfghjkl)
+23:07:21.990 [ForkJoinPool.commonPool-worker-2] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(sdfghjkl) after 292ms: results.size(0)
+23:07:22.251 [ForkJoinPool.commonPool-worker-3] DEBUG c.f.d.t.c.wrappers.LoggingWrapper - Leaving allTranslationsFor(sdfghjkl) after 552ms: results.size(0)

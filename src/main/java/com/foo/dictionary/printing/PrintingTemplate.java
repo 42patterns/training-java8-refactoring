@@ -20,10 +20,11 @@ public class PrintingTemplate {
         b.append(header());
         b.append(LINE_SEPARATOR);
 
-        Tuple<Integer> maxWidths = getMaxWidths();
-        if (maxWidths.left == 0 && maxWidths.right == 0) {
+        if (words.isEmpty()) {
             return "[No words found]";
         }
+
+        Tuple<Integer> maxWidths = getMaxWidths();
 
         for (DictionaryWord word: words) {
             b.append(separator());
